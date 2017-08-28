@@ -1,5 +1,6 @@
 import Ciudades.*
 
+//PUNTO5//
 object region{
 	var ciudades = #{albuquerque, springfield}
 	

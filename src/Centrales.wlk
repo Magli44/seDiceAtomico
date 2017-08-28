@@ -1,7 +1,7 @@
 import Ciudades.*
 
 object centralAtomica {
-	var varillasDeUranio = 10
+	var varillasDeUranio 
 
 	method produccionEnergetica() {
 		return 0.1 * varillasDeUranio
@@ -15,7 +15,7 @@ object centralAtomica {
 }
 
 object centralDeCarbon {
-	var capacidad = 2
+	var capacidad 
 	var riquezaDelSuelo = 0.9
 
 	method produccionEnergetica() {
@@ -23,6 +23,9 @@ object centralDeCarbon {
 	}
 	method contaminacion() {
 		return true
+	}
+	method capacidad(cantidad){
+		capacidad = cantidad
 	}
 }
 

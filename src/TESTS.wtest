@@ -1,0 +1,22 @@
+import Centrales.*
+import Ciudades.*
+import Region.*
+
+describe "Region"{
+	//CentralAtomicaBurns
+	test "la central atomica con 10 varillas produce 1 MKwh en springfield"{
+		centralAtomica.varillasDeUranio(10)
+		assert.equals(1, centralAtomica.produccionEnergetica())
+	}
+	
+	//CentralDeCarbon
+	test "la centralDeCarbon con una cantidad de 20 toneladas produce
+	18.5 MKwh en springfield"{
+		centralDeCarbon.capacidad(20)
+		assert.equals(18.5, centralDeCarbon.produccionEnergetica())
+	}
+	//CentralEolica
+	test "la centralEolica produce 2 Mkwh en springfield"{
+		assert.equals(2, centralEolica.produccionEnergetica())
+	}
+}
