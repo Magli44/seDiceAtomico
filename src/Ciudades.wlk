@@ -31,4 +31,19 @@ object springfield {
 	method aportanMasdeLoNecesario(){
 		return necesidadEnergetica * 1.5 < self.sumaProducciones(self.centralesContaminantes())
 	}
+	 method centralMasProductora(){
+	 	return centrales.max({central => central.produccionEnergetica()})
+	 }
+}
+
+object albuquerque{
+	var caudal = 150
+	var centrales = #{centralHidroelectrica}
+	
+	method caudal(){
+		return caudal
+	}
+	method centralMasProductora(){
+		return centrales.max({central => central.produccionEnergetica()})
+	}
 }
