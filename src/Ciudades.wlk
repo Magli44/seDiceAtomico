@@ -4,26 +4,31 @@ object springfield {
 	var necesidadEnergetica
 	var velocidadDelViento = 10
 	var riquezaDelSuelo = 0.9
-	var centrales = #{centralAtomica, centralDeCarbon, centralEolica}
+	var centrales = #{ centralAtomica, centralDeCarbon, centralEolica }
 	
-	method cubrioNecesidades(){
-	  centrales.sum({central => central.produccionEnergetica()})
-	  
+	//PUNTO2
+	method centralesContaminantes() {
+		return centrales.filter({ central => central.contaminacion() })
 	}
-	method necesidadEnergetica(cantidad){
-		necesidadEnergetica = cantidad 
+	//PUNTO3
+	method cubrioNecesidades() {
+		centrales.sum({ central => central.produccionEnergetica() })
+
 	}
-	method estaAlHorno(){
-		return self.todasLasCentralesSonContaminantes() || self.aportanMasDeLoNecesario()
+	method necesidadEnergetica(cantidad) {
+		necesidadEnergetica = cantidad
 	}
-	method todasLasCentralesSonContaminantes(){
-		return centrales.all({central => central.contaminacion()})
+	//PUNTO4
+	method estaAlHorno() {
+		return self.todasLasCentralesSonContaminantes() || self.aportanMasdeLoNecesario()
 	}
-	method centralesContaminantes(){
-		return centrales.filter({central => central.contaminacion()}) 
+	method todasLasCentralesSonContaminantes() {
+		return centrales.all({ central => central.contaminacion()})
 	}
-	method sumaDeProducciones(){
-		
+	method sumaProducciones(centralesContaminadoras){
+		return centralesContaminadoras.sum({central => central.produccionEnergetica()})
 	}
-	
+	method aportanMasdeLoNecesario(){
+		return necesidadEnergetica * 1.5 < self.sumaProducciones(self.centralesContaminantes())
+	}
 }
