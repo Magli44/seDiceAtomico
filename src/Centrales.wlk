@@ -1,7 +1,7 @@
 import Ciudades.*
 
 object centralAtomica {
-	var varillasDeUranio 
+	var varillasDeUranio
 
 	method produccionEnergetica() {
 		return 0.1 * varillasDeUranio

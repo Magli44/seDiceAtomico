@@ -47,8 +47,7 @@ describe "Region"{
 	 las mas productoras de esta region son la centralDeCarbon y la hidroelectrica."{
 	 centralAtomica.varillasDeUranio(10)
 	 centralDeCarbon.capacidad(20)
-	 springfield.necesidadEnergetica(30)
-	 assert.equals(#{centralHidroelectrica, centralDeCarbon}, region.centralesMasProductoras())
+	 assert.equals([centralHidroelectrica, centralDeCarbon], region.centralesMasProductoras())
 	 }
 	
 }
