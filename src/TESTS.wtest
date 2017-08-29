@@ -19,4 +19,20 @@ describe "Region"{
 	test "la centralEolica produce 2 Mkwh en springfield"{
 		assert.equals(2, centralEolica.produccionEnergetica())
 	}
+	//CentralesContaminantes
+	test"teniendo en cuenta los valores anteriores la central mas contaminadora
+	es la centralDeCarbon"{
+	centralAtomica.varillasDeUranio(20)
+	centralDeCarbon.capacidad(20)
+	assert.equals(#{centralDeCarbon}, springfield.centralesContaminantes())
+	}
+	//Springfield
+	test"teniendo en cuenta las centrales anteriores, y sus valores, springfield cubre
+	sus necesidades energéticas si esta es de 20 Mkwh"{
+	centralAtomica.varillasDeUranio(20)
+	centralDeCarbon.capacidad(20)
+	springfield.necesidadEnergetica(20)
+	assert.that(springfield.cubrioNecesidades())
+	}
+	
 }

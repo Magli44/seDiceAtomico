@@ -12,7 +12,7 @@ object springfield {
 	}
 	//PUNTO3
 	method cubrioNecesidades() {
-		centrales.sum({ central => central.produccionEnergetica() })
+	return necesidadEnergetica < centrales.sum({ central => central.produccionEnergetica() })
 
 	}
 	method necesidadEnergetica(cantidad) {
@@ -33,6 +33,9 @@ object springfield {
 	}
 	 method centralMasProductora(){
 	 	return centrales.max({central => central.produccionEnergetica()})
+	 }
+	 method centrales(){
+	 	return centrales
 	 }
 }
 
