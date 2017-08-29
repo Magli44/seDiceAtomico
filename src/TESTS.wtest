@@ -4,7 +4,7 @@ import Region.*
 
 describe "Region"{
 	//CentralAtomicaBurns
-	test "la central atomica con 10 varillas produce 1 MKwh en springfield"{
+	test "la central atomica con 10 varillas produce 1 MKwh en springfield."{
 		centralAtomica.varillasDeUranio(10)
 		assert.equals(1, centralAtomica.produccionEnergetica())
 	}
@@ -21,18 +21,34 @@ describe "Region"{
 	}
 	//CentralesContaminantes
 	test"teniendo en cuenta los valores anteriores la central mas contaminadora
-	es la centralDeCarbon"{
+	es la centralDeCarbon."{
 	centralAtomica.varillasDeUranio(20)
 	centralDeCarbon.capacidad(20)
 	assert.equals(#{centralDeCarbon}, springfield.centralesContaminantes())
 	}
 	//Springfield
 	test"teniendo en cuenta las centrales anteriores, y sus valores, springfield cubre
-	sus necesidades energéticas si esta es de 20 Mkwh"{
-	centralAtomica.varillasDeUranio(20)
+	sus necesidades energéticas si esta es de 20 Mkwh."{
+	centralAtomica.varillasDeUranio(10)
 	centralDeCarbon.capacidad(20)
 	springfield.necesidadEnergetica(20)
 	assert.that(springfield.cubrioNecesidades())
 	}
+	//Springfield
+	test "teniedno en cuenta las centrales anteriores, springfield esta al horno si 
+	tiene una necesidad energética de 30 Mkwh."{
+	centralAtomica.varillasDeUranio(10)
+	centralDeCarbon.capacidad(20)
+	springfield.necesidadEnergetica(30)
+	assert.notThat(springfield.estaAlHorno())
+	}
+	//Region
+	test "teniendo en cuenta las centrales de springfield mas las de albuquerque,
+	 las mas productoras de esta region son la centralDeCarbon y la hidroelectrica."{
+	 centralAtomica.varillasDeUranio(10)
+	 centralDeCarbon.capacidad(20)
+	 springfield.necesidadEnergetica(30)
+	 assert.equals(#{centralHidroelectrica, centralDeCarbon}, region.centralesMasProductoras())
+	 }
 	
 }
